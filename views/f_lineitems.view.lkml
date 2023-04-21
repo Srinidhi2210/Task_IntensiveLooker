@@ -52,6 +52,8 @@ view: f_lineitems {
     primary_key: yes
     sql: CONCAT(${l_orderkey}, ${l_linenumber});;
   }
+
+
   dimension: l_orderpriority {
     type: string
     sql: ${TABLE}."L_ORDERPRIORITY" ;;
