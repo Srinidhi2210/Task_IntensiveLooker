@@ -132,7 +132,7 @@ view: f_lineitems {
 
   measure: average_sale_price {
     type:  average
-    label: "Average Sale Price"
+    label: "Average Sales Price"
     description: "The Average Sale Price of items sold."
     value_format_name: usd
     sql:${l_totalprice} ;;
