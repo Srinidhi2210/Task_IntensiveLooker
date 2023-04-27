@@ -129,7 +129,7 @@ view: f_lineitems {
     drill_fields: []
   }
 
-  measure: total_saleprice {
+  measure: total_sale_price {
     type: sum
     label: "Total sale Price"
     description: "The Total Sale Price of items sold."
@@ -158,6 +158,66 @@ measure: Total_Russia_Sales {
   value_format: "$#,##0.00, , \" M\""
   sql:${l_totalprice}  ;;
   filters: [d_customer.c_nation: "Russia"]
+
+}
+measure: Total_Gross_Revenue {
+  type: sum
+  label: "Total Gross Revenue of completed sales"
+  description: "Total price of completed sales"
+  value_format: "$#,##0.00, , \" M\""
+  sql: ${l_totalprice} ;;
+  filters: [l_orderstatus: "F"]
+
+}
+measure: Total_Cost {
+  type: sum
+  label: " Total cost"
+  description: "The Total Cost from items sold."
+  value_format: "$#,##0.00, , \" M\""
+  sql: ${l_supplycost} ;;
+}
+
+measure: Total_Gross_Margin_Amount {
+  type: number
+  description: "Total Gross Margin Amount"
+  value_format: "$#,##0.00,,\" M\""
+  sql: ${Total_Gross_Revenue}-${Total_Cost} ;;
+}
+
+measure: Goss_Margin_Percentage {
+  type:  number
+  description: "Total Gross Margin Amount/Total Gross Revenue."
+  value_format: "0.00%"
+  sql: ${Total_Gross_Margin_Amount}/${Total_Gross_Revenue} ;;
+}
+
+measure:Number_of_Returned_Items {
+  type: sum
+  description: "Number of items that were returned by dissatisfied customers."
+  value_format: "#,##0"
+  sql:  ${l_quantity};;
+  filters: [l_returnflag: "R"]
+}
+
+measure: Total_Number_of_Items_Sold {
+type: sum
+  description: "Number of items that were sold."
+  value_format: "#,##0"
+  sql: ${l_quantity};;
+}
+
+measure: Item_Return_Rate{
+type: number
+description:  "Number Of Items Returned / Total Number Of Items Sold"
+value_format: "0.00%"
+sql: ${Number_of_Returned_Items} / ${Total_Number_of_Items_Sold };;
+
+}
+  measure: average_spend_by_customer{
+    type: number
+    description: "Total Sale Price / Total Number of Customers."
+    value_format: "$#,##0.00"
+    sql:${total_sale_price} / ${d_customer.count} ;;
 
 }
 }

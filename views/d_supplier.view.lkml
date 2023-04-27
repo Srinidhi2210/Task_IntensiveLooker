@@ -7,6 +7,14 @@ view: d_supplier {
     sql: ${TABLE}."S_ACCTBAL" ;;
   }
 
+  dimension: suppl_cohorts_acctbal {
+    type: tier
+    label: "Cohort of suppliers according to Account Balance"
+    style: integer
+    tiers: [1, 3001, 5001, 7001]
+    sql: ${s_acctbal} ;;
+  }
+
   dimension: s_address {
     type: string
     sql: ${TABLE}."S_ADDRESS" ;;
