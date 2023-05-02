@@ -210,14 +210,14 @@ measure: Item_Return_Rate{
 type: number
 description:  "Number Of Items Returned / Total Number Of Items Sold"
 value_format: "0.00%"
-sql: ${Number_of_Items_Returned} / ${Total_Number_of_Items_Sold };;
+sql: ${Number_of_Items_Returned} / NULLIF(${Total_Number_of_Items_Sold },0);;
 
 }
   measure: average_spend_by_customer{
     type: number
     description: "Total Sale Price / Total Number of Customers."
     value_format: "$#,##0.00"
-    sql:${total_sale_price} / ${d_customer.count} ;;
+    sql:${total_sale_price} / NULLIF(${d_customer.count}, 0) ;;
 
 }
 }
