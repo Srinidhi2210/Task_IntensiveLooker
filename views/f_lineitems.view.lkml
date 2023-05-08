@@ -162,8 +162,7 @@ measure: Total_Russia_Sales {
 }
 measure: Total_Gross_Revenue {
   type: sum
-  label: "Total Gross Revenue of completed sales"
-  description: "Total price of completed sales"
+  description: "The Total Gross Revenue from items sold."
   value_format: "$#,##0.00,,\" M\""
   sql: ${l_totalprice} ;;
   filters: [l_orderstatus: "F"]
