@@ -169,11 +169,10 @@ measure: Total_Gross_Revenue {
 
 }
 measure: Total_Cost {
-  type: sum
-  label: " Total cost"
+    type: sum
   description: "The Total Cost from items sold."
-  value_format: "$#,##0.00, , \" M\""
-  sql: ${l_supplycost} ;;
+  value_format: "$#,##0.00,,\" M\""
+  sql:  ${l_supplycost} ;;
 }
 
 measure: Total_Gross_Margin_Amount {
