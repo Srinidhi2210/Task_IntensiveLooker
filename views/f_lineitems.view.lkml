@@ -97,7 +97,7 @@ view: f_lineitems {
     type: string
     label: "Shipmode"
     sql: ${TABLE}."L_SHIPMODE" ;;
-    drill_fields: [d_supplier.s_acctbal_cohorts, d_supplier.s_region]
+    drill_fields: [d_supplier.suppl_cohorts_acctbal, d_supplier.s_region]
     link: {
       label: "Explore Account Balance Cohorts and Supplier Region"
     }
