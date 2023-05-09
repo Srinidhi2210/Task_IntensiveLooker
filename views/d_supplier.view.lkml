@@ -9,7 +9,7 @@ view: d_supplier {
 
   dimension: suppl_cohorts_acctbal {
     type: tier
-    label: "Cohort of suppliers according to Account Balance"
+    label: "Account Balance Cohorts"
     style: integer
     tiers: [1, 3001, 5001, 7001]
     sql: ${s_acctbal} ;;
