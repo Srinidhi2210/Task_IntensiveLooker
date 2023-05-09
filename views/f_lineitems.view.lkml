@@ -93,12 +93,15 @@ view: f_lineitems {
     type: string
     sql: ${TABLE}."L_SHIPINSTRUCT" ;;
   }
-
   dimension: l_shipmode {
     type: string
+    label: "Shipmode"
     sql: ${TABLE}."L_SHIPMODE" ;;
+    drill_fields: [d_supplier.s_acctbal_cohorts, d_supplier.s_region]
+    link: {
+      label: "Explore Account Balance Cohorts and Supplier Region"
+    }
   }
-
   dimension: l_shippriority {
     type: number
     sql: ${TABLE}."L_SHIPPRIORITY" ;;
