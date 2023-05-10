@@ -22,7 +22,15 @@ view: d_supplier {
 
   dimension: s_name {
     type: string
+    label: "Supplier Name"
+    drill_fields: [d_part.p_name]
     sql: ${TABLE}."S_NAME" ;;
+    link: {
+      label: "Google Supplier name {{ value }}"
+      url: "https://www.google.com/search?q={{ value }}"
+      icon_url: "https://google.com/favicon.ico"
+
+    }
   }
 
   dimension: s_nation {
