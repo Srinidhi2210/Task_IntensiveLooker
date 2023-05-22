@@ -235,28 +235,26 @@ measure: Goss_Margin_Percentage {
   sql: ${Total_Gross_Margin_Amount}/${Total_Gross_Revenue} ;;
 }
 
-measure:Number_of_Items_Returned {
-  type: sum
-  description: "Number of items that were returned by dissatisfied customers."
-  value_format: "#,##0"
-  sql:  ${l_quantity};;
-  filters: [l_returnflag: "R"]
-}
+    measure: items_returned {
+      description: "Number of items that were returned by dissatisfied customers"
+      type: sum
+      sql: ${l_quantity} ;;
+      filters: [l_returnflag: "R"]
+    }
 
-measure: Total_Number_of_Items_Sold {
-type: sum
-  description: "Number of items that were sold."
-  value_format: "#,##0"
-  sql: ${l_quantity};;
-}
 
-measure: item_return_rate{
-type: number
-description:  "Number Of Items Returned / Total Number Of Items Sold"
-value_format: "0.00%"
-sql: ${Number_of_Items_Returned} / NULLIF(${Total_Number_of_Items_Sold },0);;
+    measure: items_sold {
+      description: "Total number of items that were sold"
+      type: sum
+      sql: ${l_quantity} ;;
+    }
 
-}
+    measure: item_return_rate {
+      description: "Item Return Rate = Number Of Items Returned / Total Number Of Items Sold"
+      type: number
+      value_format_name: percent_2
+      sql: ${items_returned}/NULLIF(${items_sold},0 );;
+    }
 
     measure:  returned_rate_group{
       type: number
