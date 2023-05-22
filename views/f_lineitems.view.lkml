@@ -250,13 +250,27 @@ type: sum
   sql: ${l_quantity};;
 }
 
-measure: Item_Return_Rate{
+measure: item_return_rate{
 type: number
 description:  "Number Of Items Returned / Total Number Of Items Sold"
 value_format: "0.00%"
 sql: ${Number_of_Items_Returned} / NULLIF(${Total_Number_of_Items_Sold },0);;
 
 }
+
+    measure:  returned_rate_group{
+      type: number
+      value_format_name: percent_2
+      sql:${item_return_rate} ;;
+      html:
+          {% if value >= 0.5 %}
+            <font color="red">{{ rendered_value }}</font>
+          {% elsif value >= 0.3  and value < 0.5%}
+            <font color ="orange">{{ rendered_value }}</fontn>
+          {% else %}
+            <font color ="green">{{ rendered_value }}</font>
+          {% endif %} ;;
+    }
   measure: average_spend_by_customer{
     type: number
     description: "Total Sale Price / Total Number of Customers."
