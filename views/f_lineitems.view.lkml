@@ -1,6 +1,49 @@
-view: f_lineitems {
-  sql_table_name: "DATA_MART"."F_LINEITEMS"
-    ;;
+  view: f_lineitems {
+    label: "Lineitems fact"
+    sql_table_name: "DATA_MART"."F_LINEITEMS"
+      ;;
+
+
+    parameter: timeframe_selector {
+      type: unquoted
+      default_value: "month"
+
+      allowed_value: {
+        label: "Month"
+        value: "month"
+      }
+      allowed_value: {
+        label: "Quarter"
+        value: "quarter"
+      }
+      allowed_value: {
+        label: "Year"
+        value: "year"
+      }
+    }
+
+    dimension: dynamic_timeframe {
+      label_from_parameter: timeframe_selector
+
+      sql:
+      {% if timeframe_selector._parameter_value == "quarter" %} ${d_dates.quarter}
+      {% elsif timeframe_selector._parameter_value == "year" %} ${d_dates.year}
+      {% elsif timeframe_selector._parameter_value == "month" %} ${d_dates.month_num}
+      {% endif %}
+      ;;
+    }
+
+
+    dimension:dynamic_timeframe_title {
+      label: "Chart Title"
+      type: string
+      sql:
+           {% if timeframe_selector._parameter_value == "quarter" %} 'Quarterly'
+            {% elsif timeframe_selector._parameter_value == "year" %} 'Yearly'
+            {% elsif timeframe_selector._parameter_value == "month" %} 'Monthly'
+            {% endif %}
+            ;;
+    }
 
   dimension: l_availqty {
     type: number
