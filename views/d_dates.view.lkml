@@ -58,4 +58,38 @@ view: d_dates {
     type: count
     drill_fields: [month_name]
   }
+
+  parameter: view_label {
+    type: string
+    default_value: "The Granularity"
+  }
+
+  parameter: date_granularity {
+    type: unquoted
+    allowed_value: {
+      label: "Group by Year"
+      value: "year"
+    }
+    allowed_value: {
+      label: "Group by Quarter "
+      value: "quarter"
+    }
+    allowed_value: {
+      label: "Group by Month "
+      value: "month"
+    }
+  }
+
+  dimension: granularity {
+    label: "{% if date_granularity._parameter_value == 'year' %} Year {% elsif date_granularity._parameter_value == 'quarter' %} Quarter {% else %} Month {% endif %}"
+    sql:
+    {% if date_granularity._parameter_value == 'year' %}
+      ${year}
+    {% elsif date_granularity._parameter_value == 'quarter' %}
+      ${quarter}
+    {% else %}
+      ${month_num}
+    {% endif %};;
+  }
+
 }
