@@ -39,17 +39,20 @@ view: d_dates {
     sql: ${TABLE}."MONTH_NAME" ;;
   }
 
-  dimension: month_num {
+   dimension: month_num {
+    view_label: "{% parameter view_label %}"
     type: number
     sql: ${TABLE}."MONTH_NUM" ;;
   }
 
   dimension: quarter {
+    view_label: "{% parameter view_label %}"
     type: number
     sql: ${TABLE}."QUARTER" ;;
   }
 
   dimension: year {
+    view_label: "{% parameter view_label %}"
     type: number
     sql: ${TABLE}."YEAR" ;;
   }
