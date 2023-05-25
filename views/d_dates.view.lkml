@@ -42,7 +42,7 @@ view: d_dates {
   dimension: month_num {
     view_label: "{% parameter view_label %}"
     type: number
-    sql: order by {${TABLE}."MONTH_NUM" };;
+    sql: ${TABLE}."MONTH_NUM" ;;
 
   }
 
