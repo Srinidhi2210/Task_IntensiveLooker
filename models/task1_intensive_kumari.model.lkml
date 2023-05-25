@@ -2,6 +2,7 @@ connection: "tpchlooker"
 
 # include all the views
 include: "/views/**/*.view"
+include: "/Dashboard/Summary_Dashboard_Target_KS.dashboard.lookml"
 
 datagroup: task1_intensive_kumari_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
