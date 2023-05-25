@@ -92,7 +92,7 @@ view: d_dates {
     {% elsif date_granularity._parameter_value == 'quarter' %}
       ${quarter}
     {% else %}
-      ${month_num}
+      ${month_num}==order by(d_dates."MONTH_NUM")
     {% endif %};;
   }
 
