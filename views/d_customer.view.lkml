@@ -36,6 +36,12 @@ view: d_customer {
   dimension: c_region {
     type: string
     sql: ${TABLE}."C_REGION" ;;
+    drill_fields: [f_lineitems.c_region ]
+    link:{
+      label: "{{ value }}"
+      url: "  https://epam.cloud.looker.com/projects/task1_intensive_kumari::Summary_Dashboard_Target_KS?=={{ _filters['d_customer.c_region'] | url_encode }}&Customer+Nation=&Month+Quarter+Year=Month"
+    }
+
   }
 
   measure: count {
