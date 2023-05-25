@@ -42,7 +42,7 @@ view: d_dates {
   dimension: month_num {
     view_label: "{% parameter view_label %}"
     type: number
-    sql: ${TABLE}."MONTH_NUM" ;;
+    sql: order by {${TABLE}."MONTH_NUM" };;
 
   }
 
@@ -92,7 +92,7 @@ view: d_dates {
     {% elsif date_granularity._parameter_value == 'quarter' %}
       ${quarter}
     {% else %}
-      order by ${month_num}
+      ${month_num}
     {% endif %};;
   }
 
