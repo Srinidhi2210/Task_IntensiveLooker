@@ -39,7 +39,7 @@ view: d_customer {
     drill_fields: [f_lineitems.c_region ]
     link:{
       label: "{{ value }}"
-      url: "  https://epam.cloud.looker.com/projects/task1_intensive_kumari::Summary_Dashboard_Target_KS?=={{ _filters['d_customer.c_region'] | url_encode }}&Customer+Nation=&Month+Quarter+Year=Month"
+      url: "https://epam.cloud.looker.com/dashboards/281?Region={{_filters['d_customer.c_region']}}"
     }
 
   }
