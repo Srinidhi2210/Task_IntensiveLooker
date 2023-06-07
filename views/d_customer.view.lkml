@@ -38,8 +38,8 @@ view: d_customer {
     sql: ${TABLE}."C_REGION" ;;
     drill_fields: [f_lineitems.c_region ]
     link:{
-      label: "{{ value }}"
-      url: "https://epam.cloud.looker.com/dashboards/281?Region={{_filters['d_customer.c_region']}}"
+      label: "Summary Dashboard Target"
+      url: "https://epam.cloud.looker.com/dashboards/281?Region={{_filters['d_customer.c_region'] | url_encode }}"
     }
 
   }
